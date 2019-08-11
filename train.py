@@ -156,7 +156,6 @@ class Task:
 
             sess.run(tf.global_variables_initializer())
 
-            train_scores = []
             test_scores = []
 
             batch_size = FLAGS.batch_size if FLAGS.batch_size > 0 else self.train_data.shape[0]
@@ -171,13 +170,11 @@ class Task:
                     tr_ll, self.global_step = model.train(sess, _data, learning_rate)
 
                 # train_auc, train_ll, train_acc = model.evaluate(sess, self.train_data)
-                train_auc, train_ll, train_acc = 0, 0, 0
                 test_auc, test_ll, test_acc = model.evaluate(sess, self.test_data)
 
-                print('Epoch: %04d train: auc=%.6f ll=%.6f acc=%.6f test: auc=%.6f ll=%.6f acc=%.6f' %
-                      (self.epoch, train_auc, train_ll, train_acc, test_auc, test_ll, test_acc))
+                print('Epoch: %04d test: auc=%.6f ll=%.6f acc=%.6f' %
+                      (self.epoch, test_auc, test_ll, test_acc))
 
-                train_scores.append([train_auc, train_ll, train_acc])
                 test_scores = list(test_scores)
                 test_scores.append([test_auc, test_ll, test_acc])
                 test_scores = np.array(test_scores)
@@ -197,16 +194,9 @@ class Task:
             # if FLAGS.n_repeat == 1:
             #     print(self.config_json)
             ind = np.argmax(test_scores[:, 0])
-            params = tuple([ind + 1] + train_scores[ind] + list(test_scores[ind]))
-            ret = params
-            print('auc: %d, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f' % params)
-            ind = np.argmin(test_scores[:, 1])
-            params = tuple([ind + 1] + train_scores[ind] + list(test_scores[ind]))
-            print('ll: %d, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f' % params)
-            ind = np.argmax(test_scores[:, 2])
-            params = tuple([ind + 1] + train_scores[ind] + list(test_scores[ind]))
-            print('acc: %d, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f' % params)
-            return ret
+            params = tuple([ind + 1] + list(test_scores[ind]))
+            print('best_iter %d, auc: %.6f, ll: %.6f, acc: %.6f' % params)
+            return params
 
     def execute(self):
         rets = []
@@ -215,10 +205,6 @@ class Task:
         if FLAGS.n_repeat > 1:
             print(self.config_json)
             rets = np.array(rets)
-            ind = np.argmax(rets[:, 4])
-            print('max: %d, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f' % tuple(rets[ind]))
-            print('mean: %.2f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f' % tuple(np.mean(rets, axis=0)))
-            print('std: %.2f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f' % tuple(np.std(rets, axis=0)))
             return np.mean(rets, axis=0)
         else:
             return rets[0]
