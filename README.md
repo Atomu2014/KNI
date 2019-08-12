@@ -53,6 +53,8 @@ The data is processed and pickled by python3, up to 4-hop.
 According to your experiment settings, you can remove unreachable nodes and edges of the datasets.
 
 Step 2. Run ``train.py`` with default parameters for ``bc`` dataset.
+You have model options of ni (= ni:1) and ni:2, which have different attention network structures.
+Knowledge graph is the default setting, and you can turn off it by setting --kg=False.
 
     cd /path/to/code/
     python3 train.py --dataset=bc --model=ni
@@ -70,7 +72,13 @@ After a while, you will see logs like the following (the train/dev scores are di
 The default script will run the same experiment for 5 times with different random seeds. 
 You may find the experiments early stop at 0.772 AUC, 0.706 ACC (+/- 0.002).
 
-Now you achieve the new ``state-of-the-art`` :-) (the most recently reported SOTA is RippleNet, 0.729 AUC, 0.663 ACC).
+Now you achieve the new ``state-of-the-art`` :-) (by the time of submission, the best performed model is RippleNet, 0.729 AUC, 0.663 ACC).
+
+For the other datasets:
+
+    python3 train.py --dataset=ab --model=ni:2 --max_degree=128 --hop_n_sample=1,8 --learning_rate=1e-3 --l2_reg=1e-7 --n_eval=40 --temp=100
+    python3 train.py --dataset=ml-1m --model=ni:2 --max_degree=512 --hop_n_sample=1,32 --learning_rate=1e-3 --l2_reg=1e-7 --n_eval=40 --temp=1
+    python3 train.py --dataset=ml-20m --model=ni:2 --max_degree=128 --hop_n_sample=1,32 --learning_rate=1e-3 --l2_reg=1e-8 --n_eval=10 --temp=1
 
 ### Stay Connected!
 
