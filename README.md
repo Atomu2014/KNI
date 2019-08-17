@@ -1,7 +1,7 @@
 Tensorflow implementation of the paper ``An End-to-End Neighborhood-based Interaction Model for Knowledge-enhanced Recommendation``.
 This paper is accepted by, and and wins the ``best paper award`` of the 1st International Workshop on Deep Learning Practice for High-Dimensional Sparse Data, KDD'19 (DLP-KDD'19), Anchorage, AK, USA.
 
-See our [paper](todo), [poster](./material/kni_poster.pdf), [ppt](./material/kni_presentation.pdf).
+See our [paper](https://arxiv.org/abs/1908.04032), [poster](./material/kni_poster.pdf), [ppt](./material/kni_presentation.pdf).
 If you have any questions, please contact ``kevinqu16@gmail.com`` directly or open a github issue.
 I will reply ASAP.
 
@@ -25,7 +25,7 @@ NI is further integrated with graph neural networks (GNNs) and knowledge graphs 
 KNI model is not only theoretically more expressive, but also achieves great improvements (1.1% ~ 8.4%) over SOTA models.
 We also provide statistical analysis and case study to explain the early summarization issue and compare different models' behaviors.
 
-For more details, please refer to our [paper](todo), [poster](./material/kni_poster.pdf), [ppt](./material/kni_presentation.pdf).
+For more details, please refer to our [paper](https://arxiv.org/abs/1908.04032), [poster](./material/kni_poster.pdf), [ppt](./material/kni_presentation.pdf).
 
 ### Running step-by-step
 
