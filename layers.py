@@ -127,8 +127,8 @@ class GATAgg(Layer):
         self._log_vars()
 
     def _call(self, inputs):
-        # n_sup * k, n_sup * n_sample * k
-        self_vecs, neigh_vecs, n_sample, _ = inputs
+        # n_sup * k, n_sup * n_sample
+        self_vecs, neigh_vecs, n_sample = inputs
         neigh_vecs = tf.nn.dropout(neigh_vecs, 1 - self.dropout)
         self_vecs = tf.nn.dropout(self_vecs, 1 - self.dropout)
 
