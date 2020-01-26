@@ -37,7 +37,7 @@ Requirements:
 - tqdm
 - tensorflow-gpu
 
-Step 1. Download the data from [https://pan.baidu.com/s/1usnQtW-YodlPUQ1TNrrafw#list/path=%2Fdataset%2Fkg4rs](https://pan.baidu.com/s/1usnQtW-YodlPUQ1TNrrafw#list/path=%2Fdataset%2Fkg4rs) and uncompress ``pickled_data.tar.gz`` under ``./data/``, like:
+Step 1. Download the data from [https://pan.baidu.com/s/1usnQtW-YodlPUQ1TNrrafw#list/path=%2Fdataset%2Fkg4rs](https://pan.baidu.com/s/1usnQtW-YodlPUQ1TNrrafw#list/path=%2Fdataset%2Fkg4rs) or [https://drive.google.com/drive/folders/1thXezQbmuS6Q8-AXmrhB0tLM3mybJxVR?usp=sharing](https://drive.google.com/drive/folders/1thXezQbmuS6Q8-AXmrhB0tLM3mybJxVR?usp=sharing) and uncompress ``pickled_data.tar.gz`` under ``./data/``, like:
 
 
     ./data
