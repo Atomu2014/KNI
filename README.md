@@ -84,6 +84,7 @@ For the other datasets:
 
 If you see this paper/data/code helpful or related, please cite our paper with the following BibTeX entry
 
+```bibtex
 @inproceedings{qu2019end,
   title={An end-to-end neighborhood-based interaction model for knowledge-enhanced recommendation},
   author={Qu, Yanru and Bai, Ting and Zhang, Weinan and Nie, Jianyun and Tang, Jian},
@@ -91,3 +92,4 @@ If you see this paper/data/code helpful or related, please cite our paper with t
   pages={1--9},
   year={2019}
 }
+```
